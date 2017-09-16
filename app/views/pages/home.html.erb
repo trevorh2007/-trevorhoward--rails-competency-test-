@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3 text-center">You're On Rails!!!</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% Article.all.each do |a| %>
+      <div class="col-md-4 text-center">
+        <div class="card">
+          <div class="card-block">
+            <h2><%= a.title %></h2>
+            <p>Category: <%= a.category %></p>
+            <p><%= truncate(a.content, length: 300, separator: ' ') { link_to " Read More", article_path(a), class: 'home-continue' } %></p>
+            <p><%= link_to 'See All Articles', articles_path, class: 'btn btn-primary' %></p>
+          </div>
+        </div>
+          <br>
+      </div>
+    <% end %>
+    <hr>
+  </div>
+</div>
