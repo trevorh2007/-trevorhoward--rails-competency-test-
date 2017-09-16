@@ -6,6 +6,8 @@ RSpec.describe ArticlesController, type: :controller do
 
   let(:user) { FactoryGirl.create(:user) }
 
+  let(:editor) { FactoryGirl.create(:editor) }
+
   let(:valid_attributes) {
     { title: "Article 1", category: "News", content: "Some content", user_id: article_valid.id }
   }
@@ -35,8 +37,9 @@ RSpec.describe ArticlesController, type: :controller do
 
   describe "GET #new" do
     it "returns a success response" do
+      login_as(editor)
       get :new, params: {}, session: valid_session
-      expect(response).to be_success
+      expect(response.status).to eq(302)
     end
   end
 
@@ -49,11 +52,14 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   describe "POST #create" do
+    before do
+      login_as(editor)
+    end
     context "with valid params" do
       it "creates a new Article" do
         expect {
           post :create, params: {article: valid_attributes}, session: valid_session
-        }.to change(Article, :count).by(2)
+        }.to change(Article, :count).by(1)
       end
 
       it "redirects to the created article" do
@@ -71,6 +77,9 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   describe "PUT #update" do
+    before do
+      login_as(editor)
+    end
     context "with valid params" do
       let(:new_attributes) {
         { title: "New Title", category: "New Category", content: "New Content", user_id: 2 }
@@ -100,6 +109,9 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+    before do
+      login_as(editor)
+    end
     it "destroys the requested article" do
       article = Article.create! valid_attributes
       expect {
