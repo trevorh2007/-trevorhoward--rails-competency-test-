@@ -11,7 +11,7 @@ feature 'User registration' do
       click_button 'Sign up'
     end
 
-    page.must_have_content 'Check out the top stories of the day!'
-    page.current_path.must_equal '/'
+    expect(page).to have_content('Check out the top stories of the day!')
+    expect(current_path).to eq '/'
   end
 end
