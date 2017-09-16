@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "articles/index", type: :view do
   before(:each) do
     assign(:articles, [
-      Article.create!(),
-      Article.create!()
+      FactoryGirl.create(:article),
+      FactoryGirl.create(:admin_article)
     ])
   end
 

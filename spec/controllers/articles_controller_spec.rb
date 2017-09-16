@@ -53,7 +53,7 @@ RSpec.describe ArticlesController, type: :controller do
       it "creates a new Article" do
         expect {
           post :create, params: {article: valid_attributes}, session: valid_session
-        }.to change(Article, :count).by(1)
+        }.to change(Article, :count).by(2)
       end
 
       it "redirects to the created article" do
