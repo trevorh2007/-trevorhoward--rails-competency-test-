@@ -34,4 +34,4 @@ end
 gem 'devise', '~> 4.3'
 gem 'petergate', '~> 1.7', '>= 1.7.5'
 gem 'bootstrap', '~> 4.0.0.beta'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
