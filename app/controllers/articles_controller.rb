@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    authenticate_user
     @articles = Article.all
   end
 
@@ -47,5 +48,12 @@ class ArticlesController < ApplicationController
 
     def article_params
       params.require(:article).permit(:title, :category, :content, :user_id)
+    end
+
+    def authenticate_user
+      unless current_user.try(:type) == 'User'
+        flash[:alert] = "Please create an account to view the full article."
+        redirect_to(new_user_registration_path)
+      end
     end
 end

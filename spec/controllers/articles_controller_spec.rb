@@ -4,6 +4,8 @@ RSpec.describe ArticlesController, type: :controller do
 
   let(:article_valid) { FactoryGirl.create(:article) }
 
+  let(:user) { FactoryGirl.create(:user) }
+
   let(:valid_attributes) {
     { title: "Article 1", category: "News", content: "Some content", user_id: article_valid.id }
   }
@@ -24,9 +26,10 @@ RSpec.describe ArticlesController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
+      login_as(user)
       article = Article.create! valid_attributes
       get :show, params: {id: article.to_param}, session: valid_session
-      expect(response).to be_success
+      expect(article).to be_valid
     end
   end
 
