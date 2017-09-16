@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe ArticlesController, type: :controller do
 
+  let(:article_valid) { FactoryGirl.create(:article) }
+
   let(:valid_attributes) {
-    { title: "Article 1", category: "News", content: "Some content", user_id: 1 }
+    { title: "Article 1", category: "News", content: "Some content", user_id: article_valid.id }
   }
 
   let(:invalid_attributes) {
@@ -78,7 +80,7 @@ RSpec.describe ArticlesController, type: :controller do
         article = Article.create! valid_attributes
         put :update, params: {id: article.to_param, article: new_attributes}, session: valid_session
         article.reload
-        expect(article.title).to_be "New Title"
+        expect(article.title).to eq("New Title")
       end
 
       it "redirects to the article" do
