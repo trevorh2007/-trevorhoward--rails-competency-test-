@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Editor Article" do
+describe "Editor Articles" do
 	before do
 		editor = FactoryGirl.create(:editor)
 		login_as(editor)
