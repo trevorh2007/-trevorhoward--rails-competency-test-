@@ -31,5 +31,7 @@
 
   <br>
 
-  <%= link_to 'New Article', new_article_path %>
+  <% if logged_in?(:editor) %>
+    <%= link_to 'New Article', new_article_path %>
+  <% end %>
 </div>

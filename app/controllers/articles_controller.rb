@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show], editor: [:new, :edit, :create, :update, :destroy], site_admin: :all
+  access all: [:index, :show], editor: [:new, :edit, :create, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -12,7 +12,11 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    if logged_in?(:editor)
+      @article = Article.new
+    else
+      redirect_to root_path, alert: "You are not authorized to view this page"
+    end
   end
 
   def edit

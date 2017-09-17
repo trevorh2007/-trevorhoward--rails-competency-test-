@@ -14,9 +14,9 @@ describe "User Article" do
 	end
 
 	it "can not be edited as user" do
-		visit '/articles'
+		visit '/articles/1/edit'
 
-		expect(page).to have_no_content("Edit")
+		expect(current_path).to eq('/')
 	end
 
 	it "can not be deleted as user" do
@@ -26,10 +26,9 @@ describe "User Article" do
 	end
 
 	it "can not be created as user" do
-		visit '/articles'
-		click_link('New Article')
+		visit '/articles/new'
 
-		expect(page).to have_content("Permission Denied")
+		expect(current_path).to eq('/')
 	end
 
 end
