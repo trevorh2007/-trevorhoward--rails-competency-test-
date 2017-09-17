@@ -32,7 +32,12 @@ describe "Editor Article" do
 	end
 
 	it 'can be edited' do
+		article = FactoryGirl.create(:article)
+		visit '/articles'
+		click_link 'Edit'
 
+		expect(current_path).to eq('/articles/1/edit')
+		expect(page).to have_content("Edit")
 	end
 	
 end
