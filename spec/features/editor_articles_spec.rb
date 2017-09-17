@@ -18,7 +18,7 @@ describe "Editor Articles" do
     	click_button 'Create Article'
     end
 
-   	expect(current_path).to eq('/')
+   	expect(current_path).to eq('/articles/1')
    	expect(page).to have_content("You can do it!")
 	end
 

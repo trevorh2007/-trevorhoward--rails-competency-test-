@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
     end
 
     def authenticate_user
-      unless current_user.try(:type) == 'User'
+      unless logged_in?(:user) || logged_in?(:editor)
         flash[:alert] = "Please create an account to view the full article."
         redirect_to(new_user_registration_path)
       end
