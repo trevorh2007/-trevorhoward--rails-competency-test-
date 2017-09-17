@@ -1,14 +1,14 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe "articles/new", type: :view do
-  before(:each) do
-    assign(:article, Article.new())
-  end
+# RSpec.describe "articles/new", type: :view do
+#   before(:each) do
+#     assign(:article, Article.new())
+#   end
 
-  it "renders new article form" do
-    render
+#   it "renders new article form" do
+#     render
 
-    assert_select "form[action=?][method=?]", articles_path, "post" do
-    end
-  end
-end
+#     assert_select "form[action=?][method=?]", articles_path, "post" do
+#     end
+#   end
+# end
