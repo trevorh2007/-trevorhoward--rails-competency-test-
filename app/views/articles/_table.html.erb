@@ -1,0 +1,23 @@
+  <table class="table table-inverse table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th class="text-center" width="120">Title</th>
+        <th class="text-center">Content</th>
+        <th class="text-center">Category</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <% @articles.each do |article| %>
+          <tr>
+            <td class="text-center"><%= link_to article.title, article_path(article), class: "full-article-index" %></td>
+            <td class="container"><%= truncate(article.content, length: 300, separator: ' ') { link_to " Full Article", article_path(article), class: 'full-article-index' } %></td>
+            <td class="text-center"><%= article.category %></td>
+            <% if logged_in?(:editor) %>
+              <td><%= link_to 'Edit', edit_article_path(article) %></td>
+              <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
