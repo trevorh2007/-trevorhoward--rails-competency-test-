@@ -18,14 +18,17 @@ describe "Editor Article" do
     	click_button 'Create Article'
     end
 
-
    	expect(current_path).to eq('/')
    	expect(page).to have_content("You can do it!")
-
 	end
 
 	it 'can be deleted' do
+		article = FactoryGirl.create(:article)
+		visit '/articles'
+		click_link 'Destroy'
 
+		expect(page).to have_content("Article was successfully destroyed.")
+		expect(page).to have_no_content("Destroy")
 	end
 
 	it 'can be edited' do
