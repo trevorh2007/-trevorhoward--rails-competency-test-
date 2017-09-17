@@ -4,11 +4,7 @@ class PagesController < ApplicationController
 	end
 
 	def admin
-    if logged_in?(:site_admin)
-      @article = Article.all
-    else
-      redirect_to root_path, alert: "You are not authorized to view this page"
-    end
+    redirect_to root_path, alert: "You are not authorized to view this page" unless logged_in?(:site_admin)
 	end
 
 end

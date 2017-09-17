@@ -15,16 +15,14 @@ describe "User Article" do
 
 	it "can not be edited as user" do
 		visit '/articles'
-		click_link('Edit')
 
-		expect(page).to have_content("Permission Denied")
+		expect(page).to have_no_content("Edit")
 	end
 
 	it "can not be deleted as user" do
 		visit '/articles'
-		click_link('Destroy')
 
-		expect(page).to have_content("Permission Denied")
+		expect(page).to have_no_content("Destroy")
 	end
 
 	it "can not be created as user" do
