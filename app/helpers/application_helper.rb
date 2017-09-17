@@ -22,7 +22,7 @@ module ApplicationHelper
     elsif success
       js add_gritter(success, title: "Trevor Howard Rails", sticky: false, image: :success)
     else notice
-      js add_gritter(notice, title: "Trevor Howard Rails", sticky: false, image: :success)
+      js add_gritter(notice, title: "Trevor Howard Rails", sticky: false, image: "assets/notice.png")
     end
     
   end
