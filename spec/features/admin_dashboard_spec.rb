@@ -1,9 +1,15 @@
 require 'rails_helper'
 
-describe 'Admin' do
+describe 'Admin Dashboard' do
 	before do
 		@admin = FactoryGirl.create(:admin)
 		login_as(@admin)
+	end
+
+	it 'can be accessed by admin' do
+		visit '/admin'
+
+		expect(page.status_code).to eq(200)
 	end
 
 	it 'can create a new user and set user role' do
@@ -18,13 +24,14 @@ describe 'Admin' do
       click_button('Save')
     end
 
-    expect(current_path).to eq '/admin/user'
     expect(page).to have_content("User successfully created")
     expect(page).to have_content("logintest@example.com")
     expect(User.last.email).to eq("logintest@example.com")
 	end
 
 	it 'can edit user and change role' do
+		@admin = FactoryGirl.create(:admin)
+		login_as(@admin)
 		user = FactoryGirl.create(:user)
 		visit '/admin/user/1/edit'
 
@@ -36,7 +43,6 @@ describe 'Admin' do
       click_button('Save')
 		end
 
-    expect(current_path).to eq '/admin/user'
     expect(page).to have_content("User successfully updated")
     expect(page).to have_content("replaceemail@test.com")
     expect(User.first.email).to eq("replaceemail@test.com")
@@ -44,6 +50,8 @@ describe 'Admin' do
 	end
 
 	it 'can delete a user' do
+		@admin = FactoryGirl.create(:admin)
+		login_as(@admin)
 		user = FactoryGirl.create(:user)
 		visit '/admin/user/1/delete'
 		click_button("Yes, I'm sure")
