@@ -15,7 +15,7 @@ puts "1 Editor created"
 		title: "Article #{article}",
 		content: "Bacon ipsum dolor amet shankle prosciutto drumstick, chicken pork loin sirloin strip steak tail ham brisket. Tongue corned beef picanha turkey, porchetta strip steak short loin turducken shankle kielbasa. Flank jerky frankfurter drumstick pancetta. Pastrami cupim pancetta, pork loin kielbasa tenderloin fatback drumstick frankfurter ham biltong. Andouille brisket filet mignon shoulder kielbasa porchetta beef ribs pancetta chuck turducken pork loin pork belly landjaeger prosciutto. Fatback chuck leberkas, biltong alcatra tongue ham hock sausage pork chop tail shankle sirloin.",
 		category: "News",
-		user_id: User.first.email
+		user_id: 1
 		)
 end
 
@@ -24,7 +24,7 @@ end
 		title: "Article #{article + 3}",
 		content: "Bacon ipsum dolor amet shankle prosciutto drumstick, chicken pork loin sirloin strip steak tail ham brisket. Tongue corned beef picanha turkey, porchetta strip steak short loin turducken shankle kielbasa. Flank jerky frankfurter drumstick pancetta. Pastrami cupim pancetta, pork loin kielbasa tenderloin fatback drumstick frankfurter ham biltong. Andouille brisket filet mignon shoulder kielbasa porchetta beef ribs pancetta chuck turducken pork loin pork belly landjaeger prosciutto. Fatback chuck leberkas, biltong alcatra tongue ham hock sausage pork chop tail shankle sirloin.",
 		category: "Space",
-		user_id: User.second.email
+		user_id: 2
 		)
 end
 
@@ -33,7 +33,7 @@ end
 		title: "Article #{article + 6}",
 		content: "Bacon ipsum dolor amet shankle prosciutto drumstick, chicken pork loin sirloin strip steak tail ham brisket. Tongue corned beef picanha turkey, porchetta strip steak short loin turducken shankle kielbasa. Flank jerky frankfurter drumstick pancetta. Pastrami cupim pancetta, pork loin kielbasa tenderloin fatback drumstick frankfurter ham biltong. Andouille brisket filet mignon shoulder kielbasa porchetta beef ribs pancetta chuck turducken pork loin pork belly landjaeger prosciutto. Fatback chuck leberkas, biltong alcatra tongue ham hock sausage pork chop tail shankle sirloin.",
 		category: "Technology",
-		user_id: User.last.email
+		user_id: 3
 		)
 end
 

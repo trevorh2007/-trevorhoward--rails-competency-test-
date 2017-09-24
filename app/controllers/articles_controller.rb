@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show], editor: [:new, :edit, :create, :update, :destroy]
+  access all: [:index], user: [:show], editor: [:show, :new, :edit, :create, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
     end
 
     def authenticate_user
-      unless logged_in?(:user) || logged_in?(:editor)
+      if !logged_in?
         flash[:alert] = "Please create an account to view the full article."
         redirect_to(new_user_registration_path)
       end

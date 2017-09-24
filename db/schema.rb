@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170916201645) do
     t.text "content"
     t.string "category"
     t.integer "user_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "guest_users", force: :cascade do |t|
