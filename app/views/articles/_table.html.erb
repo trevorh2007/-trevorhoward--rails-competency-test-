@@ -13,7 +13,7 @@
             <td class="text-center"><%= link_to article.title, article_path(article), class: "full-article-index" %></td>
             <td class="container"><%= truncate(article.content, length: 300, separator: ' ') { link_to " Full Article", article_path(article), class: 'full-article-index' } %></td>
             <td class="text-center"><%= article.category %></td>
-            <% if logged_in?(:editor) %>
+            <% if current_user.id == article.user_id %>
               <td><%= link_to 'Edit', edit_article_path(article) %></td>
               <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>

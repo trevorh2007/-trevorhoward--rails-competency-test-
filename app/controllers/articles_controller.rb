@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @articles = current_user.articles.find(params[:id])
   end
 
   def create
